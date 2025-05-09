@@ -51,9 +51,22 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-    @OneToMany(mappedBy = "user")
+    // @OneToMany(mappedBy = "user")
     // private List<Transaction> transactions;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private final LocalDateTime createdAt = LocalDateTime.now();
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "createdAt=" + createdAt +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", role=" + role +
+                '}';
+    }
 }
