@@ -18,6 +18,9 @@ public class AppText {
 
     public static final String ROLE_REQUIRED = "User role is required";
 
+    public static final String CATEGORY_NAME_REQUIRED = "Category name is required";
+    public static final String CATEGORY_NAME_TOO_LONG = "Category name must not exceed 100 characters";
+
     private AppText() {
 
     }
