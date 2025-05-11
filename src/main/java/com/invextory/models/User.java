@@ -60,13 +60,13 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "createdAt=" + createdAt +
-                ", id=" + id +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", phoneNumber='" + (phoneNumber != null ? phoneNumber : "N/A") + '\'' +
                 ", role=" + role +
+                ", numberOfTransactions=" + (transactions != null ? transactions.size() : 0) +
                 '}';
     }
+
 }
