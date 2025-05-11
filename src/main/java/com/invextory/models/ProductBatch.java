@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -33,6 +34,33 @@ public class ProductBatch {
 
     private LocalDateTime expiryDate;
 
+    @NotNull(message = AppText.MRP_REQUIRED)
+    @Positive(message = AppText.MRP_POSITIVE)
+    @Column(name = "mrp")
+    private BigDecimal mrp;
+
+    @NotNull(message = AppText.PURCHASE_PRICE_REQUIRED)
+    @Positive(message = AppText.PURCHASE_PRICE_POSITIVE)
+    @Column(name = "purchase_price")
+    private BigDecimal purchasePrice;
+
+    @Min(value = 0, message = AppText.DISCOUNT_INVALID)
+    @Column(name = "discount")
+    private Integer discount;
+
+    @NotNull(message = AppText.GST_REQUIRED)
+    @Min(value = 0, message = AppText.GST_INVALID)
+    @Column(name = "gst_rate")
+    private Integer gstRate;
+
+    @Column(name = "is_active", nullable = false)
+    private boolean isActive = true;
+
+    @NotNull(message = AppText.SELLING_PRICE_REQUIRED)
+    @Positive(message = AppText.SELLING_PRICE_POSITIVE)
+    @Column(name = "selling_price")
+    private BigDecimal sellingPrice;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
@@ -50,6 +78,12 @@ public class ProductBatch {
                 ", batchNumber='" + batchNumber + '\'' +
                 ", stockQuantity=" + stockQuantity +
                 ", expiryDate=" + expiryDate +
+                ", mrp=" + mrp +
+                ", purchasePrice=" + purchasePrice +
+                ", discount=" + discount +
+                ", gstRate=" + gstRate +
+                ", isActive=" + isActive +
+                ", sellingPrice=" + sellingPrice +
                 ", product=" + (product != null ? product.getName() : "N/A") +
                 ", supplier=" + (supplier != null ? supplier.getName() : "N/A") +
                 ", createdAt=" + createdAt +
