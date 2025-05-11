@@ -41,6 +41,11 @@ public class AppText {
     public static final String TRANSACTION_DESCRIPTION_TOO_LONG = "Description must not exceed 255 characters.";
     public static final String TRANSACTION_NOTE_TOO_LONG = "Note must not exceed 255 characters.";
 
+    public static final String BATCH_NUMBER_REQUIRED = "Batch number is required";
+    public static final String BATCH_NUMBER_TOO_LONG = "Batch number cannot be more than 50 characters";
+    public static final String STOCK_QUANTITY_REQUIRED = "Stock quantity is required";
+    public static final String STOCK_QUANTITY_NEGATIVE = "Stock quantity cannot be negative";
+
     private AppText() {
 
     }

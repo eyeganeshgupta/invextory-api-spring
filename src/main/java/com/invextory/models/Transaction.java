@@ -52,8 +52,8 @@ public class Transaction {
     private LocalDateTime updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @JoinColumn(name = "product_batch_id")
+    private ProductBatch productBatch;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -75,7 +75,7 @@ public class Transaction {
                 ", note='" + (note != null ? note : "N/A") + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
-                ", product=" + (product != null ? product.getName() : "N/A") +
+                ", productBatch=" + (productBatch != null ? productBatch.getBatchNumber() : "N/A") +
                 ", user=" + (user != null ? user.getName() : "N/A") +
                 ", supplier=" + (supplier != null ? supplier.getName() : "N/A") +
                 '}';
