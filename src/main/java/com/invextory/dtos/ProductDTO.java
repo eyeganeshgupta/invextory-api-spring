@@ -1,26 +1,22 @@
-package com.invextory.models;
+package com.invextory.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.invextory.constants.AppText;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-@Entity
-@Table(name = "products")
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ProductDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = AppText.PRODUCT_NAME_REQUIRED)
@@ -37,28 +33,24 @@ public class Product {
     @Size(max = 255, message = AppText.PRODUCT_IMAGE_URL_TOO_LONG)
     private String imageUrl;
 
-    private final LocalDateTime createDate = LocalDateTime.now();
+    private LocalDateTime createDate = LocalDateTime.now();
 
-    @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
     @NotNull(message = AppText.PRODUCT_CATEGORY_REQUIRED)
-    private Category category;
+    private Long categoryId;
 
-    // Batch details - One product can have multiple batches
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductBatch> batches;
+    private Integer numberOfBatches;
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "ProductDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", sku='" + sku + '\'' +
                 ", description='" + (description != null ? description : "N/A") + '\'' +
                 ", imageUrl='" + (imageUrl != null ? imageUrl : "N/A") + '\'' +
-                ", createDate=" + createDate +
-                ", category=" + (category != null ? category.getName() : "N/A") +
-                ", numberOfBatches=" + (batches != null ? batches.size() : 0) +
+                ", createDate=" + (createDate != null ? createDate : "N/A") +
+                ", categoryId=" + categoryId +
+                ", numberOfBatches=" + (numberOfBatches != null ? numberOfBatches : 0) +
                 '}';
     }
 }

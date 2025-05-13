@@ -25,8 +25,6 @@ public class AppText {
     public static final String PRODUCT_NAME_TOO_LONG = "Product name must not exceed 100 characters";
     public static final String PRODUCT_SKU_REQUIRED = "Product SKU is required";
     public static final String PRODUCT_SKU_TOO_LONG = "Product SKU must not exceed 50 characters";
-    public static final String PRODUCT_PRICE_POSITIVE = "Product price must be a positive value";
-    public static final String PRODUCT_STOCK_NEGATIVE = "Stock quantity cannot be negative";
     public static final String PRODUCT_DESCRIPTION_TOO_LONG = "Description must not exceed 255 characters";
     public static final String PRODUCT_IMAGE_URL_TOO_LONG = "Image URL must not exceed 255 characters";
     public static final String PRODUCT_CATEGORY_REQUIRED = "Product category is required";
