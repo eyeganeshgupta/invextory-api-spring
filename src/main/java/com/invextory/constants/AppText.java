@@ -50,6 +50,9 @@ public class AppText {
     public static final String SELLING_PRICE_REQUIRED = "Selling price is required.";
     public static final String SELLING_PRICE_POSITIVE = "Selling price must be a positive value.";
 
+    public static final String PRODUCT_ID_REQUIRED = "Product ID is required";
+    public static final String SUPPLIER_ID_REQUIRED = "Supplier ID is required";
+
     private AppText() {
 
     }
