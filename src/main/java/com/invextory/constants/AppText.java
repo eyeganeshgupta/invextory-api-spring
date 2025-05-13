@@ -53,6 +53,8 @@ public class AppText {
     public static final String PRODUCT_ID_REQUIRED = "Product ID is required";
     public static final String SUPPLIER_ID_REQUIRED = "Supplier ID is required";
 
+    public static final String USER_ID_REQUIRED = "User ID is required";
+
     private AppText() {
 
     }
