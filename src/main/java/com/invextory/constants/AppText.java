@@ -55,6 +55,13 @@ public class AppText {
 
     public static final String USER_ID_REQUIRED = "User ID is required";
 
+    public static final String LOGIN_EMAIL_REQUIRED = "Email is required for login.";
+    public static final String LOGIN_PASSWORD_REQUIRED = "Password is required for login.";
+
+    public static final String PRODUCT_BATCH_ID_REQUIRED = "Product batch ID is required.";
+    public static final String TRANSACTION_QUANTITY_REQUIRED = "Transaction quantity is required.";
+    public static final String TRANSACTION_QUANTITY_POSITIVE = "Transaction quantity must be at least 1.";
+
     private AppText() {
 
     }
