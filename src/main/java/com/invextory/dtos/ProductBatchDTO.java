@@ -57,7 +57,7 @@ public class ProductBatchDTO {
     @NotNull(message = AppText.SUPPLIER_ID_REQUIRED)
     private Long supplierId;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
 
     @Override
     public String toString() {

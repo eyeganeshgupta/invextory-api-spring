@@ -33,7 +33,7 @@ public class ProductDTO {
     @Size(max = 255, message = AppText.PRODUCT_IMAGE_URL_TOO_LONG)
     private String imageUrl;
 
-    private LocalDateTime createDate = LocalDateTime.now();
+    private LocalDateTime createdAt;
 
     @NotNull(message = AppText.PRODUCT_CATEGORY_REQUIRED)
     private Long categoryId;
@@ -48,7 +48,7 @@ public class ProductDTO {
                 ", sku='" + sku + '\'' +
                 ", description='" + (description != null ? description : "N/A") + '\'' +
                 ", imageUrl='" + (imageUrl != null ? imageUrl : "N/A") + '\'' +
-                ", createDate=" + (createDate != null ? createDate : "N/A") +
+                ", createDate=" + (createdAt != null ? createdAt : "N/A") +
                 ", categoryId=" + categoryId +
                 ", numberOfBatches=" + (numberOfBatches != null ? numberOfBatches : 0) +
                 '}';

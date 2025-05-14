@@ -42,7 +42,7 @@ public class TransactionDTO {
     @Size(max = 255, message = AppText.TRANSACTION_NOTE_TOO_LONG)
     private String note;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
 
