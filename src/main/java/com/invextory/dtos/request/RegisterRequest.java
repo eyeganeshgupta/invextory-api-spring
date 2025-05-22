@@ -4,9 +4,7 @@ import com.invextory.constants.AppText;
 import com.invextory.constants.RegexPattern;
 import com.invextory.enums.UserRole;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
