@@ -1,6 +1,7 @@
 package com.invextory.specification;
 
 import com.invextory.models.Transaction;
+import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
@@ -66,6 +67,22 @@ public class TransactionFilter {
 
             logger.info("Completed building specification with {} predicates.", predicates.size());
             return criteriaBuilder.or(predicates.toArray(new Predicate[0]));
+        };
+    }
+
+    public static Specification<Transaction> byMonthAndYear(int month, int year) {
+        return (root, query, criteriaBuilder) -> {
+            logger.info("Filtering transactions by month: {} and year: {}", month, year);
+
+            Expression<Integer> monthExpression = criteriaBuilder.function("month", Integer.class, root.get("createdAt"));
+            Expression<Integer> yearExpression = criteriaBuilder.function("year", Integer.class, root.get("createdAt"));
+
+            Predicate monthPredicate = criteriaBuilder.equal(monthExpression, month);
+            Predicate yearPredicate = criteriaBuilder.equal(yearExpression, year);
+
+            logger.info("Month and year predicates constructed successfully.");
+
+            return criteriaBuilder.and(monthPredicate, yearPredicate);
         };
     }
 }
