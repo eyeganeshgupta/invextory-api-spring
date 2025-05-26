@@ -62,6 +62,13 @@ public class AppText {
     public static final String TRANSACTION_QUANTITY_REQUIRED = "Transaction quantity is required.";
     public static final String TRANSACTION_QUANTITY_POSITIVE = "Transaction quantity must be at least 1.";
 
+    public static final String LOG_REGISTER_INIT = "Initiating registration process for user with email: {}";
+    public static final String LOG_ROLE_PROVIDED = "User role specified as: {}";
+    public static final String LOG_ROLE_DEFAULT = "No user role specified. Assigning default role: MANAGER.";
+    public static final String LOG_USER_SAVE = "Persisting new user record to the database for email: {}";
+    public static final String LOG_REGISTER_SUCCESS = "User registration completed successfully for email: {}";
+    public static final String USER_REGISTRATION_SUCCESS = "User has been registered successfully.";
+
     private AppText() {
 
     }
