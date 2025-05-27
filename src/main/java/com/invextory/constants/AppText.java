@@ -69,6 +69,21 @@ public class AppText {
     public static final String LOG_REGISTER_SUCCESS = "User registration completed successfully for email: {}";
     public static final String USER_REGISTRATION_SUCCESS = "User has been registered successfully.";
 
+    // Login-related messages
+    public static final String LOG_LOGIN_INIT = "Initiating login process for user with email: {}";
+    public static final String LOG_USER_NOT_FOUND = "No user found with the provided email: {}";
+    public static final String LOG_INVALID_PASSWORD = "Password mismatch for user with email: {}";
+    public static final String LOG_LOGIN_SUCCESS = "User logged in successfully with email: {}";
+    public static final String USER_LOGIN_SUCCESS_MESSAGE = "User has been successfully authenticated and logged in.";
+
+    // Error messages
+    public static final String ERROR_EMAIL_NOT_FOUND = "Email not found in the system.";
+    public static final String ERROR_PASSWORD_MISMATCH = "The provided password does not match our records.";
+
+    // JWT Token related
+    public static final String JWT_TOKEN_EXPIRATION = "6 months";
+    public static final String JWT_LOGIN_SUCCESS = "Token generated and login successful for user with email: {}";
+
     private AppText() {
 
     }

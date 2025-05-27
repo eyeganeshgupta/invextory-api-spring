@@ -5,6 +5,8 @@ import com.invextory.dtos.request.LoginRequest;
 import com.invextory.dtos.request.RegisterRequest;
 import com.invextory.dtos.response.Response;
 import com.invextory.enums.UserRole;
+import com.invextory.exceptions.InvalidCredentialsException;
+import com.invextory.exceptions.NotFoundException;
 import com.invextory.models.User;
 import com.invextory.repositories.UserRepository;
 import com.invextory.security.JwtUtils;
@@ -59,7 +61,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Response loginUser(LoginRequest loginRequest) {
-        return null;
+        log.info(LOG_LOGIN_INIT, loginRequest.getEmail());
+
+        User user = userRepository.findByEmail(loginRequest.getEmail())
+                .orElseThrow(() -> {
+                    log.info(LOG_USER_NOT_FOUND, loginRequest.getEmail());
+                    return new NotFoundException(ERROR_EMAIL_NOT_FOUND);
+                });
+
+        if (!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
+            log.info(LOG_INVALID_PASSWORD, loginRequest.getEmail());
+            throw new InvalidCredentialsException(ERROR_PASSWORD_MISMATCH);
+        }
+
+        String token = jwtUtils.generateToken(user.getEmail());
+
+        log.info(JWT_LOGIN_SUCCESS, loginRequest.getEmail());
+
+        return Response.builder()
+                .status(200)
+                .message(USER_LOGIN_SUCCESS_MESSAGE)
+                .role(user.getRole())
+                .token(token)
+                .expirationTime(JWT_TOKEN_EXPIRATION)
+                .build();
     }
 
     @Override
