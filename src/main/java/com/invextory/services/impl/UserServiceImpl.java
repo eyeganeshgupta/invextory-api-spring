@@ -14,8 +14,12 @@ import com.invextory.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static com.invextory.constants.AppText.*;
 
@@ -89,7 +93,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Response getAllUsers() {
-        return null;
+        log.info(LOG_GET_ALL_USERS_INIT);
+
+        List<User> users = userRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+
+        users.forEach(user -> user.setTransactions(null));
+
+        List<UserDTO> userDTOs = modelMapper.map(users, new TypeToken<List<UserDTO>>() {}.getType());
+
+        log.info(LOG_USERS_RETRIEVED, users.size());
+
+        return Response.builder()
+                .status(200)
+                .message(USERS_FETCH_SUCCESS_MESSAGE)
+                .users(userDTOs)
+                .build();
     }
 
     @Override

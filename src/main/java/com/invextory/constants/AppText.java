@@ -84,6 +84,11 @@ public class AppText {
     public static final String JWT_TOKEN_EXPIRATION = "6 months";
     public static final String JWT_LOGIN_SUCCESS = "Token generated and login successful for user with email: {}";
 
+    // Get All Users
+    public static final String LOG_GET_ALL_USERS_INIT = "Fetching all users from the database.";
+    public static final String LOG_USERS_RETRIEVED = "Successfully retrieved {} users from the database.";
+    public static final String USERS_FETCH_SUCCESS_MESSAGE = "The users have been successfully fetched.";
+
     private AppText() {
 
     }
