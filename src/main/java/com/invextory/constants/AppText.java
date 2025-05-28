@@ -89,10 +89,17 @@ public class AppText {
     public static final String LOG_USERS_RETRIEVED = "Successfully retrieved {} users from the database.";
     public static final String USERS_FETCH_SUCCESS_MESSAGE = "The users have been successfully fetched.";
 
+    // Get Current LoggedIn User
     public static final String LOG_GET_CURRENT_USER_INIT = "Fetching current logged-in user.";
     public static final String LOG_AUTHENTICATION_NULL = "Authentication object is null.";
     public static final String LOG_AUTHENTICATION_EMAIL = "Authenticated user's email: {}";
     public static final String LOG_GET_CURRENT_USER_SUCCESS = "Successfully retrieved current user: {}";
+
+    // Get User By ID
+    public static final String LOG_GET_USER_BY_ID_INIT = "Fetching user with ID: {}";
+    public static final String LOG_GET_USER_BY_ID_SUCCESS = "Successfully retrieved user with ID: {}";
+    public static final String ERROR_USER_ID_NOT_FOUND = "User ID not found.";
+    public static final String USER_FETCH_SUCCESS_MESSAGE = "User retrieved successfully.";
 
     private AppText() {
 
