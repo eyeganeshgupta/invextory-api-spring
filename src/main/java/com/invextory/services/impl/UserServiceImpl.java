@@ -16,6 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -112,7 +114,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getCurrentLoggedInUser() {
-        return null;
+        log.info(LOG_GET_CURRENT_USER_INIT);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null) {
+            log.info(LOG_AUTHENTICATION_NULL);
+            throw new NotFoundException(ERROR_EMAIL_NOT_FOUND);
+        }
+
+        String email = authentication.getName();
+        log.info(LOG_AUTHENTICATION_EMAIL, email);
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> {
+                    log.info(LOG_USER_NOT_FOUND, email);
+                    return new NotFoundException(ERROR_EMAIL_NOT_FOUND);
+                });
+
+        user.setTransactions(null);
+        log.info(LOG_GET_CURRENT_USER_SUCCESS, user.getEmail());
+
+        return user;
     }
 
     @Override
