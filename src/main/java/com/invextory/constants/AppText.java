@@ -101,6 +101,10 @@ public class AppText {
     public static final String ERROR_USER_ID_NOT_FOUND = "User ID not found.";
     public static final String USER_FETCH_SUCCESS_MESSAGE = "User retrieved successfully.";
 
+    public static final String LOG_UPDATE_USER_INIT = "Updating user with ID: {}";
+    public static final String ERROR_USER_NOT_FOUND = "User Not Found";
+    public static final String USER_UPDATE_SUCCESS_MESSAGE = "User successfully updated";
+
     private AppText() {
 
     }

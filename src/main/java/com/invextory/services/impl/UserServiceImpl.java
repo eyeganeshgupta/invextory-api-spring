@@ -158,7 +158,37 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Response updateUser(Long id, UserDTO userDTO) {
-        return null;
+        log.info(LOG_UPDATE_USER_INIT, id);
+
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ERROR_USER_NOT_FOUND));
+
+        if (userDTO.getEmail() != null) {
+            existingUser.setEmail(userDTO.getEmail());
+        }
+
+        if (userDTO.getPhoneNumber() != null) {
+            existingUser.setPhoneNumber(userDTO.getPhoneNumber());
+        }
+
+        if (userDTO.getName() != null) {
+            existingUser.setName(userDTO.getName());
+        }
+
+        if (userDTO.getRole() != null) {
+            existingUser.setRole(userDTO.getRole());
+        }
+
+        if (userDTO.getPassword() != null && !userDTO.getPassword().isEmpty()) {
+            existingUser.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        }
+
+        userRepository.save(existingUser);
+
+        return Response.builder()
+                .status(200)
+                .message(USER_UPDATE_SUCCESS_MESSAGE)
+                .build();
     }
 
     @Override
