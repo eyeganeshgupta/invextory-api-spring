@@ -193,7 +193,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Response deleteUser(Long id) {
-        return null;
+        log.info(LOG_DELETE_USER_INIT, id);
+
+        userRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ERROR_USER_NOT_FOUND));
+
+        userRepository.deleteById(id);
+
+        return Response.builder()
+                .status(200)
+                .message(USER_DELETE_SUCCESS_MESSAGE)
+                .build();
     }
 
     @Override

@@ -105,6 +105,9 @@ public class AppText {
     public static final String ERROR_USER_NOT_FOUND = "User Not Found";
     public static final String USER_UPDATE_SUCCESS_MESSAGE = "User successfully updated";
 
+    public static final String LOG_DELETE_USER_INIT = "Attempting to delete user with ID: {}";
+    public static final String USER_DELETE_SUCCESS_MESSAGE = "User successfully deleted";
+
     private AppText() {
 
     }
