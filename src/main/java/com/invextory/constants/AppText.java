@@ -108,6 +108,14 @@ public class AppText {
     public static final String LOG_DELETE_USER_INIT = "Attempting to delete user with ID: {}";
     public static final String USER_DELETE_SUCCESS_MESSAGE = "User successfully deleted";
 
+    public static final String TRANSACTION_FETCH_SUCCESS_MESSAGE = "User transactions successfully retrieved.";
+    public static final String TRANSACTION_FETCH_ERROR_MESSAGE = "An error occurred while fetching user transactions.";
+
+    public static final String LOG_GET_USER_TRANSACTIONS_INIT = "Fetching transactions for user with ID: {}";
+    public static final String LOG_USERID_NOT_FOUND = "User with ID: {} not found.";
+    public static final String LOG_TRANSACTION_FETCH_SUCCESS = "Successfully retrieved transactions for user with ID: {}";
+
+
     private AppText() {
 
     }

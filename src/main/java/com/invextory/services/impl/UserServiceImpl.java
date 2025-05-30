@@ -208,6 +208,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Response getUserTransactions(Long id) {
-        return null;
+        log.info(LOG_GET_USER_TRANSACTIONS_INIT, id);
+
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.info(LOG_USERID_NOT_FOUND, id);
+                    return new NotFoundException(ERROR_USER_NOT_FOUND);
+                });
+
+        UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+
+        userDTO.getTransactions().forEach(transactionDTO -> {
+            transactionDTO.setUser(null);
+            transactionDTO.setSupplier(null);
+        });
+
+        log.info(LOG_TRANSACTION_FETCH_SUCCESS, id);
+
+        return Response.builder()
+                .status(200)
+                .message(TRANSACTION_FETCH_SUCCESS_MESSAGE)
+                .user(userDTO)
+                .build();
     }
 }
