@@ -115,6 +115,12 @@ public class AppText {
     public static final String LOG_USERID_NOT_FOUND = "User with ID: {} not found.";
     public static final String LOG_TRANSACTION_FETCH_SUCCESS = "Successfully retrieved transactions for user with ID: {}";
 
+    // =================== CATEGORY MESSAGES ===================
+    public static final String CATEGORY_CREATE_SUCCESS_MESSAGE = "Category has been successfully created.";
+
+    // =================== CATEGORY LOG MESSAGES ===================
+    public static final String LOG_CREATE_CATEGORY_INIT = "Initiating category creation for name: {}";
+    public static final String LOG_CREATE_CATEGORY_SUCCESS = "Category created successfully with name: {}";
 
     private AppText() {
 
