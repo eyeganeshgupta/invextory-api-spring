@@ -117,10 +117,17 @@ public class AppText {
 
     // =================== CATEGORY MESSAGES ===================
     public static final String CATEGORY_CREATE_SUCCESS_MESSAGE = "Category has been successfully created.";
+    public static final String CATEGORY_FETCH_SUCCESS_MESSAGE = "Category data fetched successfully.";
+    public static final String CATEGORY_UPDATE_SUCCESS_MESSAGE = "Category has been successfully updated.";
+    public static final String CATEGORY_DELETE_SUCCESS_MESSAGE = "Category has been successfully deleted.";
+    public static final String ERROR_CATEGORY_NOT_FOUND = "Category not found.";
 
     // =================== CATEGORY LOG MESSAGES ===================
     public static final String LOG_CREATE_CATEGORY_INIT = "Initiating category creation for name: {}";
     public static final String LOG_CREATE_CATEGORY_SUCCESS = "Category created successfully with name: {}";
+
+    public static final String LOG_GET_ALL_CATEGORIES_INIT = "Fetching all categories from the database.";
+    public static final String LOG_GET_ALL_CATEGORIES_SUCCESS = "Retrieved {} categories from the database.";
 
     private AppText() {
 

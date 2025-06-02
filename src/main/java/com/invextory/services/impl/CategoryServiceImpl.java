@@ -42,7 +42,20 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Response getAllCategories() {
-        return null;
+        log.info(LOG_GET_ALL_CATEGORIES_INIT);
+
+        List<Category> categories = categoryRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+        categories.forEach(category -> category.setProducts(null));
+
+        List<CategoryDTO> categoryDTOList = modelMapper.map(categories, new TypeToken<List<CategoryDTO>>() {}.getType());
+
+        log.info(LOG_GET_ALL_CATEGORIES_SUCCESS, categoryDTOList.size());
+
+        return Response.builder()
+                .status(200)
+                .message(CATEGORY_FETCH_SUCCESS_MESSAGE)
+                .categories(categoryDTOList)
+                .build();
     }
 
     @Override
