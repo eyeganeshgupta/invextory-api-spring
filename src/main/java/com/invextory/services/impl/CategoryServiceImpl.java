@@ -60,7 +60,23 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Response getCategoryById(Long id) {
-        return null;
+        log.info(LOG_GET_CATEGORY_BY_ID_INIT, id);
+
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.warn(LOG_CATEGORY_NOT_FOUND_BY_ID, id);
+                    return new NotFoundException(ERROR_CATEGORY_NOT_FOUND);
+                });
+
+        CategoryDTO categoryDTO = modelMapper.map(category, CategoryDTO.class);
+
+        log.info(LOG_GET_CATEGORY_BY_ID_SUCCESS, id);
+
+        return Response.builder()
+                .status(200)
+                .message(CATEGORY_FETCH_SUCCESS_MESSAGE)
+                .category(categoryDTO)
+                .build();
     }
 
     @Override

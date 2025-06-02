@@ -129,6 +129,10 @@ public class AppText {
     public static final String LOG_GET_ALL_CATEGORIES_INIT = "Fetching all categories from the database.";
     public static final String LOG_GET_ALL_CATEGORIES_SUCCESS = "Retrieved {} categories from the database.";
 
+    public static final String LOG_GET_CATEGORY_BY_ID_INIT = "Fetching category with ID: {}";
+    public static final String LOG_GET_CATEGORY_BY_ID_SUCCESS = "Successfully retrieved category with ID: {}";
+    public static final String LOG_CATEGORY_NOT_FOUND_BY_ID = "No category found with ID: {}";
+
     private AppText() {
 
     }
