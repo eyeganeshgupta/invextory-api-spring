@@ -81,7 +81,23 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Response updateCategory(Long id, CategoryDTO categoryDTO) {
-        return null;
+        log.info(LOG_UPDATE_CATEGORY_INIT, id);
+
+        Category existingCategory = categoryRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.warn(LOG_CATEGORY_NOT_FOUND_BY_ID, id);
+                    return new NotFoundException(ERROR_CATEGORY_NOT_FOUND);
+                });
+
+        existingCategory.setName(categoryDTO.getName());
+        categoryRepository.save(existingCategory);
+
+        log.info(LOG_UPDATE_CATEGORY_SUCCESS, id);
+
+        return Response.builder()
+                .status(200)
+                .message(CATEGORY_UPDATE_SUCCESS_MESSAGE)
+                .build();
     }
 
     @Override
