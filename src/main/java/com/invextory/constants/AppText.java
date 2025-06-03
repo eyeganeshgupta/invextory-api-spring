@@ -136,6 +136,9 @@ public class AppText {
     public static final String LOG_UPDATE_CATEGORY_INIT = "Updating category with ID: {}";
     public static final String LOG_UPDATE_CATEGORY_SUCCESS = "Category updated successfully with ID: {}";
 
+    public static final String LOG_DELETE_CATEGORY_INIT = "Deleting category with ID: {}";
+    public static final String LOG_DELETE_CATEGORY_SUCCESS = "Category deleted successfully with ID: {}";
+
     private AppText() {
 
     }
