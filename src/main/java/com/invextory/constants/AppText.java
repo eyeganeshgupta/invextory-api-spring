@@ -139,6 +139,14 @@ public class AppText {
     public static final String LOG_DELETE_CATEGORY_INIT = "Deleting category with ID: {}";
     public static final String LOG_DELETE_CATEGORY_SUCCESS = "Category deleted successfully with ID: {}";
 
+    // =================== SUPPLIER MESSAGES ===================
+    public static final String SUPPLIER_SAVE_SUCCESS_MESSAGE = "Supplier was successfully saved.";
+
+    // =================== SUPPLIER LOG MESSAGES ===================
+    public static final String LOG_ADD_SUPPLIER_INIT = "Initiating the process to add a new supplier with name: {}";
+    public static final String LOG_ADD_SUPPLIER_SUCCESS = "Successfully added supplier with name: {}";
+
+
     private AppText() {
 
     }
