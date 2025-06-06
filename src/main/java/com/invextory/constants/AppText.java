@@ -153,6 +153,7 @@ public class AppText {
     public static final String LOG_GET_ALL_SUPPLIERS_INIT = "Fetching all suppliers from the database.";
     public static final String LOG_GET_ALL_SUPPLIERS_SUCCESS = "Successfully fetched {} suppliers from the database.";
     public static final String LOG_GET_SUPPLIER_BY_ID_INIT = "Fetching supplier with ID: {}";
+    public static final String LOG_GET_SUPPLIER_BY_ID_SUCCESS = "Successfully retrieved supplier with ID: {}";
 
     private AppText() {
 

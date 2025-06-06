@@ -90,12 +90,29 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public Response getSupplierById(Long id) {
-        return null;
+
+        log.info(LOG_GET_SUPPLIER_BY_ID_INIT, id);
+
+        Supplier supplier = supplierRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.warn(LOG_GET_SUPPLIER_BY_ID_INIT, id);
+                    return new NotFoundException(SUPPLIER_NOT_FOUND_MESSAGE);
+                });
+
+        SupplierDTO supplierDTO = modelMapper.map(supplier, SupplierDTO.class);
+
+        log.info(LOG_GET_SUPPLIER_BY_ID_SUCCESS, id);
+
+        return Response.builder()
+                .status(200)
+                .message(SUPPLIER_FETCH_SUCCESS_MESSAGE)
+                .supplier(supplierDTO)
+                .build();
     }
 
     @Override
     public Response deleteSupplier(Long id) {
         return null;
     }
-    
+
 }
