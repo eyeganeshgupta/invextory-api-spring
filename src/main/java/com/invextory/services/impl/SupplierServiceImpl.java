@@ -9,6 +9,10 @@ import com.invextory.services.SupplierService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.springframework.data.domain.Sort;
+
+import java.util.List;
 
 import static com.invextory.constants.AppText.*;
 
@@ -68,7 +72,20 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public Response getAllSupplier() {
-        return null;
+
+        log.info(LOG_GET_ALL_SUPPLIERS_INIT);
+
+        List<Supplier> suppliers = supplierRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+        List<SupplierDTO> supplierDTOList = modelMapper.map(suppliers, new TypeToken<List<SupplierDTO>>() {
+        }.getType());
+
+        log.info(LOG_GET_ALL_SUPPLIERS_SUCCESS, supplierDTOList.size());
+
+        return Response.builder()
+                .status(200)
+                .message(SUPPLIER_FETCH_SUCCESS_MESSAGE)
+                .suppliers(supplierDTOList)
+                .build();
     }
 
     @Override
@@ -80,5 +97,5 @@ public class SupplierServiceImpl implements SupplierService {
     public Response deleteSupplier(Long id) {
         return null;
     }
-
+    
 }

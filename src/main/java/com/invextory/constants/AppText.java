@@ -142,6 +142,7 @@ public class AppText {
     // =================== SUPPLIER MESSAGES ===================
     public static final String SUPPLIER_SAVE_SUCCESS_MESSAGE = "Supplier was successfully saved.";
     public static final String SUPPLIER_UPDATE_SUCCESS_MESSAGE = "Supplier details were successfully updated.";
+    public static final String SUPPLIER_FETCH_SUCCESS_MESSAGE = "Suppliers retrieved successfully.";
     public static final String SUPPLIER_NOT_FOUND_MESSAGE = "Supplier with the provided ID not found.";
 
     // =================== SUPPLIER LOG MESSAGES ===================
@@ -149,6 +150,8 @@ public class AppText {
     public static final String LOG_ADD_SUPPLIER_SUCCESS = "Successfully added supplier with name: {}";
     public static final String LOG_UPDATE_SUPPLIER_INIT = "Initiating the process to update supplier with ID: {}";
     public static final String LOG_UPDATE_SUPPLIER_SUCCESS = "Successfully updated supplier with ID: {}";
+    public static final String LOG_GET_ALL_SUPPLIERS_INIT = "Fetching all suppliers from the database.";
+    public static final String LOG_GET_ALL_SUPPLIERS_SUCCESS = "Successfully fetched {} suppliers from the database.";
     public static final String LOG_GET_SUPPLIER_BY_ID_INIT = "Fetching supplier with ID: {}";
 
     private AppText() {
