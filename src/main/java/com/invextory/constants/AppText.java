@@ -144,6 +144,7 @@ public class AppText {
     public static final String SUPPLIER_UPDATE_SUCCESS_MESSAGE = "Supplier details were successfully updated.";
     public static final String SUPPLIER_FETCH_SUCCESS_MESSAGE = "Suppliers retrieved successfully.";
     public static final String SUPPLIER_NOT_FOUND_MESSAGE = "Supplier with the provided ID not found.";
+    public static final String SUPPLIER_DELETE_SUCCESS_MESSAGE = "Supplier was successfully deleted.";
 
     // =================== SUPPLIER LOG MESSAGES ===================
     public static final String LOG_ADD_SUPPLIER_INIT = "Initiating the process to add a new supplier with name: {}";
@@ -154,6 +155,8 @@ public class AppText {
     public static final String LOG_GET_ALL_SUPPLIERS_SUCCESS = "Successfully fetched {} suppliers from the database.";
     public static final String LOG_GET_SUPPLIER_BY_ID_INIT = "Fetching supplier with ID: {}";
     public static final String LOG_GET_SUPPLIER_BY_ID_SUCCESS = "Successfully retrieved supplier with ID: {}";
+    public static final String LOG_DELETE_SUPPLIER_INIT = "Attempting to delete supplier with ID: {}";
+    public static final String LOG_DELETE_SUPPLIER_SUCCESS = "Successfully deleted supplier with ID: {}";
 
     private AppText() {
 

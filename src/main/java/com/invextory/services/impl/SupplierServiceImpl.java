@@ -112,7 +112,23 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public Response deleteSupplier(Long id) {
-        return null;
+
+        log.info(LOG_DELETE_SUPPLIER_INIT, id);
+
+        supplierRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.warn(LOG_GET_SUPPLIER_BY_ID_INIT, id);
+                    return new NotFoundException(SUPPLIER_NOT_FOUND_MESSAGE);
+                });
+
+        supplierRepository.deleteById(id);
+
+        log.info(LOG_DELETE_SUPPLIER_SUCCESS, id);
+
+        return Response.builder()
+                .status(200)
+                .message(SUPPLIER_DELETE_SUCCESS_MESSAGE)
+                .build();
     }
 
 }
