@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ import static com.invextory.constants.AppText.*;
 
 @Slf4j
 @RequiredArgsConstructor
+@Service
 public class SupplierServiceImpl implements SupplierService {
 
     private final SupplierRepository supplierRepository;
