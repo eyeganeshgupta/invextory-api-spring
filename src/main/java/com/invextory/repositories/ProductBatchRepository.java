@@ -20,4 +20,5 @@ public interface ProductBatchRepository extends JpaRepository<ProductBatch, Long
 
     List<ProductBatch> findByIsActiveFalse();
 
+    List<ProductBatch> findByProductId(Long productId);
 }

@@ -158,6 +158,15 @@ public class AppText {
     public static final String LOG_DELETE_SUPPLIER_INIT = "Attempting to delete supplier with ID: {}";
     public static final String LOG_DELETE_SUPPLIER_SUCCESS = "Successfully deleted supplier with ID: {}";
 
+    // =================== PRODUCT BATCH MESSAGES ===================
+    public static final String BATCH_CREATE_SUCCESS_MESSAGE = "Product batch has been successfully created.";
+    public static final String ERROR_PRODUCT_NOT_FOUND = "Product not found.";
+    public static final String ERROR_SUPPLIER_NOT_FOUND = "Supplier not found.";
+
+    // =================== PRODUCT BATCH LOG MESSAGES ===================
+    public static final String LOG_CREATE_BATCH_INIT = "Initiating product batch creation for batch number: {}";
+    public static final String LOG_CREATE_BATCH_SUCCESS = "Product batch created successfully with batch number: {}";
+
     private AppText() {
 
     }
