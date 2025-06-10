@@ -22,7 +22,6 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.createCategory(categoryDTO));
     }
 
-
     @GetMapping("/all")
     public ResponseEntity<Response> getAllCategories() {
         return ResponseEntity.ok(categoryService.getAllCategories());
@@ -44,5 +43,5 @@ public class CategoryController {
     public ResponseEntity<Response> deleteCategory(@PathVariable Long id) {
         return ResponseEntity.ok(categoryService.deleteCategory(id));
     }
-    
+
 }
