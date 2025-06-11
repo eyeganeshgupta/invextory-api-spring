@@ -160,12 +160,15 @@ public class AppText {
 
     // =================== PRODUCT BATCH MESSAGES ===================
     public static final String BATCH_CREATE_SUCCESS_MESSAGE = "Product batch has been successfully created.";
+    public static final String BATCH_FETCH_SUCCESS_MESSAGE = "Product batch data fetched successfully.";
     public static final String ERROR_PRODUCT_NOT_FOUND = "Product not found.";
     public static final String ERROR_SUPPLIER_NOT_FOUND = "Supplier not found.";
 
     // =================== PRODUCT BATCH LOG MESSAGES ===================
     public static final String LOG_CREATE_BATCH_INIT = "Initiating product batch creation for batch number: {}";
     public static final String LOG_CREATE_BATCH_SUCCESS = "Product batch created successfully with batch number: {}";
+    public static final String LOG_GET_BATCHES_BY_PRODUCT_INIT = "Fetching all batches for product ID: {}";
+    public static final String LOG_GET_BATCHES_BY_PRODUCT_SUCCESS = "Fetched {} batches for product ID: {}";
 
     private AppText() {
 

@@ -55,7 +55,18 @@ public class ProductBatchServiceImpl implements ProductBatchService {
 
     @Override
     public Response getBatchesByProduct(Long productId) {
-        return null;
+        log.info(LOG_GET_BATCHES_BY_PRODUCT_INIT, productId);
+
+        List<ProductBatch> batches = batchRepository.findByProductId(productId);
+        List<ProductBatchDTO> batchDTOs = modelMapper.map(batches, new TypeToken<List<ProductBatchDTO>>() {}.getType());
+
+        log.info(LOG_GET_BATCHES_BY_PRODUCT_SUCCESS, batchDTOs.size(), productId);
+
+        return Response.builder()
+                .status(200)
+                .message(BATCH_FETCH_SUCCESS_MESSAGE)
+                .productBatches(batchDTOs)
+                .build();
     }
 
     @Override
