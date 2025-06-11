@@ -71,7 +71,20 @@ public class ProductBatchServiceImpl implements ProductBatchService {
 
     @Override
     public Response updateBatchStock(Long batchId, Integer quantity) {
-        return null;
+        log.info(LOG_UPDATE_BATCH_STOCK_INIT, batchId);
+
+        ProductBatch batch = batchRepository.findById(batchId)
+                .orElseThrow(() -> new NotFoundException(ERROR_BATCH_NOT_FOUND));
+
+        batch.setStockQuantity(quantity);
+        batchRepository.save(batch);
+
+        log.info(LOG_UPDATE_BATCH_STOCK_SUCCESS, batchId);
+
+        return Response.builder()
+                .status(200)
+                .message(BATCH_UPDATE_SUCCESS_MESSAGE)
+                .build();
     }
 
     @Override
