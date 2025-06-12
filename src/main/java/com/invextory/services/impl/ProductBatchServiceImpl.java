@@ -89,7 +89,19 @@ public class ProductBatchServiceImpl implements ProductBatchService {
 
     @Override
     public Response deleteBatch(Long batchId) {
-        return null;
+        log.info(LOG_DELETE_BATCH_INIT, batchId);
+
+        ProductBatch batch = batchRepository.findById(batchId)
+                .orElseThrow(() -> new NotFoundException(ERROR_BATCH_NOT_FOUND));
+
+        batchRepository.delete(batch);
+
+        log.info(LOG_DELETE_BATCH_SUCCESS, batchId);
+
+        return Response.builder()
+                .status(200)
+                .message(BATCH_DELETE_SUCCESS_MESSAGE)
+                .build();
     }
 
     @Override
