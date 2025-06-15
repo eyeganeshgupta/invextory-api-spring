@@ -181,10 +181,13 @@ public class AppText {
 
     // =================== PRODUCT MESSAGES ===================
     public static final String PRODUCT_CREATE_SUCCESS = "Product has been successfully created.";
+    public static final String PRODUCTS_FETCH_SUCCESS = "Products fetched successfully.";
 
     // =================== PRODUCT LOG MESSAGES ===================
     public static final String LOG_CREATE_PRODUCT_INIT = "Initiating product creation for name: {}";
     public static final String LOG_CREATE_PRODUCT_SUCCESS = "Product created successfully with name: {}";
+    public static final String LOG_GET_ALL_PRODUCTS_INIT = "Fetching all products from the database.";
+    public static final String LOG_GET_ALL_PRODUCTS_SUCCESS = "Retrieved {} products from the database.";
 
     private AppText() {
 

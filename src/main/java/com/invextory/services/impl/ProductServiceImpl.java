@@ -11,7 +11,11 @@ import com.invextory.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static com.invextory.constants.AppText.*;
 
@@ -45,7 +49,20 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Response getAllProducts() {
-        return null;
+        log.info(LOG_GET_ALL_PRODUCTS_INIT);
+
+        List<Product> products = productRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+        products.forEach(p -> p.setBatches(null));
+        List<ProductDTO> dtos = modelMapper.map(products, new TypeToken<List<ProductDTO>>() {
+        }.getType());
+
+        log.info(LOG_GET_ALL_PRODUCTS_SUCCESS, dtos.size());
+
+        return Response.builder()
+                .status(200)
+                .message(PRODUCTS_FETCH_SUCCESS)
+                .products(dtos)
+                .build();
     }
 
     @Override
