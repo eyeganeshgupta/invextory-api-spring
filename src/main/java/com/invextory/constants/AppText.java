@@ -179,6 +179,13 @@ public class AppText {
     public static final String LOG_DELETE_BATCH_INIT = "Deleting product batch with ID: {}";
     public static final String LOG_DELETE_BATCH_SUCCESS = "Product batch deleted with ID: {}";
 
+    // =================== PRODUCT MESSAGES ===================
+    public static final String PRODUCT_CREATE_SUCCESS = "Product has been successfully created.";
+
+    // =================== PRODUCT LOG MESSAGES ===================
+    public static final String LOG_CREATE_PRODUCT_INIT = "Initiating product creation for name: {}";
+    public static final String LOG_CREATE_PRODUCT_SUCCESS = "Product created successfully with name: {}";
+
     private AppText() {
 
     }
