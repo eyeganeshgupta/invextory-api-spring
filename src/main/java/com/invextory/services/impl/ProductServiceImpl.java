@@ -89,7 +89,30 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Response updateProduct(Long id, ProductDTO productDTO) {
-        return null;
+        log.info(LOG_UPDATE_PRODUCT_INIT, id);
+
+        Product existingProduct = productRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.warn(LOG_PRODUCT_NOT_FOUND, id);
+                    return new NotFoundException(ERROR_PRODUCT_NOT_FOUND);
+                });
+
+        modelMapper.map(productDTO, existingProduct);
+
+        if (productDTO.getCategoryId() != null) {
+            Category category = categoryRepository.findById(productDTO.getCategoryId())
+                    .orElseThrow(() -> new NotFoundException(ERROR_CATEGORY_NOT_FOUND));
+            existingProduct.setCategory(category);
+        }
+
+        productRepository.save(existingProduct);
+
+        log.info(LOG_UPDATE_PRODUCT_SUCCESS, id);
+
+        return Response.builder()
+                .status(200)
+                .message(PRODUCT_UPDATE_SUCCESS)
+                .build();
     }
 
     @Override
