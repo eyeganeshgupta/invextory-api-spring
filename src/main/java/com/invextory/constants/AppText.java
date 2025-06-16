@@ -182,12 +182,18 @@ public class AppText {
     // =================== PRODUCT MESSAGES ===================
     public static final String PRODUCT_CREATE_SUCCESS = "Product has been successfully created.";
     public static final String PRODUCTS_FETCH_SUCCESS = "Products fetched successfully.";
+    public static final String PRODUCT_FETCH_SUCCESS = "Product fetched successfully.";
+    public static final String PRODUCT_UPDATE_SUCCESS = "Product has been successfully updated.";
+    public static final String PRODUCT_DELETE_SUCCESS = "Product has been successfully deleted.";
 
     // =================== PRODUCT LOG MESSAGES ===================
     public static final String LOG_CREATE_PRODUCT_INIT = "Initiating product creation for name: {}";
     public static final String LOG_CREATE_PRODUCT_SUCCESS = "Product created successfully with name: {}";
     public static final String LOG_GET_ALL_PRODUCTS_INIT = "Fetching all products from the database.";
     public static final String LOG_GET_ALL_PRODUCTS_SUCCESS = "Retrieved {} products from the database.";
+    public static final String LOG_GET_PRODUCT_INIT = "Fetching product with ID: {}";
+    public static final String LOG_PRODUCT_NOT_FOUND = "No product found with ID: {}";
+    public static final String LOG_GET_PRODUCT_SUCCESS = "Successfully retrieved product with ID: {}";
 
     private AppText() {
 

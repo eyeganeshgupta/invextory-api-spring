@@ -67,7 +67,24 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Response getProductById(Long id) {
-        return null;
+        log.info(LOG_GET_PRODUCT_INIT, id);
+
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.warn(LOG_PRODUCT_NOT_FOUND, id);
+                    return new NotFoundException(ERROR_PRODUCT_NOT_FOUND);
+                });
+
+        ProductDTO dto = modelMapper.map(product, ProductDTO.class);
+        dto.setNumberOfBatches(product.getBatches() != null ? product.getBatches().size() : 0);
+
+        log.info(LOG_GET_PRODUCT_SUCCESS, id);
+
+        return Response.builder()
+                .status(200)
+                .message(PRODUCT_FETCH_SUCCESS)
+                .product(dto)
+                .build();
     }
 
     @Override
