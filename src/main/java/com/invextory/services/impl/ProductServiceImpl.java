@@ -117,7 +117,21 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Response deleteProduct(Long id) {
-        return null;
-    }
+        log.info(LOG_DELETE_PRODUCT_INIT, id);
 
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.warn(LOG_PRODUCT_NOT_FOUND, id);
+                    return new NotFoundException(ERROR_PRODUCT_NOT_FOUND);
+                });
+
+        productRepository.delete(product);
+
+        log.info(LOG_DELETE_PRODUCT_SUCCESS, id);
+
+        return Response.builder()
+                .status(200)
+                .message(PRODUCT_DELETE_SUCCESS)
+                .build();
+    }
 }
