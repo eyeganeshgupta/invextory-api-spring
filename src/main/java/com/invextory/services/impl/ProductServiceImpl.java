@@ -97,7 +97,21 @@ public class ProductServiceImpl implements ProductService {
                     return new NotFoundException(ERROR_PRODUCT_NOT_FOUND);
                 });
 
-        modelMapper.map(productDTO, existingProduct);
+        if (productDTO.getName() != null) {
+            existingProduct.setName(productDTO.getName());
+        }
+
+        if (productDTO.getSku() != null) {
+            existingProduct.setSku(productDTO.getSku());
+        }
+
+        if (productDTO.getDescription() != null) {
+            existingProduct.setDescription(productDTO.getDescription());
+        }
+
+        if (productDTO.getImageUrl() != null) {
+            existingProduct.setImageUrl(productDTO.getImageUrl());
+        }
 
         if (productDTO.getCategoryId() != null) {
             Category category = categoryRepository.findById(productDTO.getCategoryId())
