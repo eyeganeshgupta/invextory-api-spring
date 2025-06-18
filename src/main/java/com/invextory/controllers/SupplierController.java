@@ -16,14 +16,13 @@ public class SupplierController {
 
     private final SupplierService supplierService;
 
-    @PostMapping("/add")
+    @PostMapping
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Response> addSupplier(@RequestBody @Valid SupplierDTO supplierDTO) {
         return ResponseEntity.ok(supplierService.addSupplier(supplierDTO));
     }
 
-
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<Response> getAllSuppliers() {
         return ResponseEntity.ok(supplierService.getAllSupplier());
     }
@@ -33,13 +32,13 @@ public class SupplierController {
         return ResponseEntity.ok(supplierService.getSupplierById(id));
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Response> updateSupplier(@PathVariable Long id, @RequestBody @Valid SupplierDTO supplierDTO) {
         return ResponseEntity.ok(supplierService.updateSupplier(id, supplierDTO));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Response> deleteSupplier(@PathVariable Long id) {
         return ResponseEntity.ok(supplierService.deleteSupplier(id));
