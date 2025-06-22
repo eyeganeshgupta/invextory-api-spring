@@ -199,6 +199,16 @@ public class AppText {
     public static final String LOG_DELETE_PRODUCT_INIT = "Attempting to delete product with ID: {}";
     public static final String LOG_DELETE_PRODUCT_SUCCESS = "Successfully deleted product with ID: {}";
 
+    // =================== TRANSACTION MESSAGES ===================
+    public static final String TRANSACTION_CREATE_SUCCESS = "Transaction has been successfully created.";
+
+    // =================== TRANSACTION LOG MESSAGES ===================
+    public static final String LOG_CREATE_TRANSACTION_INIT = "Initiating transaction creation for type: {}";
+    public static final String LOG_CREATE_TRANSACTION_SUCCESS = "Transaction created successfully with ID: {}";
+
+    // =================== ERROR MESSAGES ===================
+    public static final String ERROR_PRODUCT_BATCH_NOT_FOUND = "Product batch not found.";
+
     private AppText() {
 
     }
