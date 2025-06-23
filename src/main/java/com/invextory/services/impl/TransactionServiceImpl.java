@@ -3,8 +3,14 @@ package com.invextory.services.impl;
 import com.invextory.dtos.TransactionDTO;
 import com.invextory.dtos.response.Response;
 import com.invextory.exceptions.NotFoundException;
-import com.invextory.models.*;
-import com.invextory.repositories.*;
+import com.invextory.models.ProductBatch;
+import com.invextory.models.Supplier;
+import com.invextory.models.Transaction;
+import com.invextory.models.User;
+import com.invextory.repositories.ProductBatchRepository;
+import com.invextory.repositories.SupplierRepository;
+import com.invextory.repositories.TransactionRepository;
+import com.invextory.repositories.UserRepository;
 import com.invextory.services.TransactionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -56,7 +62,20 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Response getTransactionById(Long id) {
-        return null;
+        log.info(LOG_GET_TRANSACTION_INIT, id);
+
+        Transaction transaction = transactionRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.warn(ERROR_TRANSACTION_NOT_FOUND);
+                    return new NotFoundException(ERROR_TRANSACTION_NOT_FOUND);
+                });
+
+        log.info(LOG_GET_TRANSACTION_SUCCESS, id);
+        return Response.builder()
+                .status(200)
+                .message(TRANSACTION_FETCH_SUCCESS)
+                .transaction(modelMapper.map(transaction, TransactionDTO.class))
+                .build();
     }
 
     @Override
