@@ -202,12 +202,15 @@ public class AppText {
     // =================== TRANSACTION MESSAGES ===================
     public static final String TRANSACTION_CREATE_SUCCESS = "Transaction has been successfully created.";
     public static final String TRANSACTION_FETCH_SUCCESS = "Transaction fetched successfully.";
+    public static final String TRANSACTIONS_FETCH_SUCCESS = "Transactions fetched successfully.";
 
     // =================== TRANSACTION LOG MESSAGES ===================
     public static final String LOG_CREATE_TRANSACTION_INIT = "Initiating transaction creation for type: {}";
     public static final String LOG_CREATE_TRANSACTION_SUCCESS = "Transaction created successfully with ID: {}";
     public static final String LOG_GET_TRANSACTION_INIT = "Fetching transaction with ID: {}";
     public static final String LOG_GET_TRANSACTION_SUCCESS = "Successfully retrieved transaction with ID: {}";
+    public static final String LOG_GET_ALL_TRANSACTIONS_INIT = "Fetching all transactions";
+    public static final String LOG_GET_ALL_TRANSACTIONS_SUCCESS = "Successfully retrieved {} transactions";
 
     // =================== ERROR MESSAGES ===================
     public static final String ERROR_TRANSACTION_NOT_FOUND = "Transaction not found.";

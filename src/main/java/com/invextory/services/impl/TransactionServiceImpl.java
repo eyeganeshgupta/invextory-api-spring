@@ -18,6 +18,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import static com.invextory.constants.AppText.*;
 
 @Slf4j
@@ -80,7 +83,19 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Response getAllTransactions() {
-        return null;
+        log.info(LOG_GET_ALL_TRANSACTIONS_INIT);
+
+        List<Transaction> transactions = transactionRepository.findAll();
+        List<TransactionDTO> dtos = transactions.stream()
+                .map(t -> modelMapper.map(t, TransactionDTO.class))
+                .toList();
+
+        log.info(LOG_GET_ALL_TRANSACTIONS_SUCCESS, dtos.size());
+        return Response.builder()
+                .status(200)
+                .message(TRANSACTIONS_FETCH_SUCCESS)
+                .transactions(dtos)
+                .build();
     }
 
     @Override
