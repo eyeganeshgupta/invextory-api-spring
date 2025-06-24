@@ -99,8 +99,23 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    @Transactional
     public Response updateTransaction(Long id, TransactionDTO transactionDTO) {
-        return null;
+        log.info(LOG_UPDATE_TRANSACTION_INIT, id);
+
+        Transaction existing = transactionRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ERROR_TRANSACTION_NOT_FOUND));
+
+        modelMapper.map(transactionDTO, existing);
+        existing.setUpdatedAt(LocalDateTime.now());
+
+        transactionRepository.save(existing);
+        log.info(LOG_UPDATE_TRANSACTION_SUCCESS, id);
+
+        return Response.builder()
+                .status(200)
+                .message(TRANSACTION_UPDATE_SUCCESS)
+                .build();
     }
 
     @Override
