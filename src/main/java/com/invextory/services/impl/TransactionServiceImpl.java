@@ -119,8 +119,20 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    @Transactional
     public Response deleteTransaction(Long id) {
-        return null;
+        log.info(LOG_DELETE_TRANSACTION_INIT, id);
+
+        Transaction transaction = transactionRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ERROR_TRANSACTION_NOT_FOUND));
+
+        transactionRepository.delete(transaction);
+        log.info(LOG_DELETE_TRANSACTION_SUCCESS, id);
+
+        return Response.builder()
+                .status(200)
+                .message(TRANSACTION_DELETE_SUCCESS)
+                .build();
     }
 
 }

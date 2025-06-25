@@ -202,6 +202,7 @@ public class AppText {
     // =================== TRANSACTION MESSAGES ===================
     public static final String TRANSACTION_CREATE_SUCCESS = "Transaction has been successfully created.";
     public static final String TRANSACTION_UPDATE_SUCCESS = "Transaction has been successfully updated.";
+    public static final String TRANSACTION_DELETE_SUCCESS = "Transaction has been successfully deleted.";
     public static final String TRANSACTION_FETCH_SUCCESS = "Transaction fetched successfully.";
     public static final String TRANSACTIONS_FETCH_SUCCESS = "Transactions fetched successfully.";
 
@@ -210,6 +211,8 @@ public class AppText {
     public static final String LOG_CREATE_TRANSACTION_SUCCESS = "Transaction created successfully with ID: {}";
     public static final String LOG_UPDATE_TRANSACTION_INIT = "Updating transaction with ID: {}";
     public static final String LOG_UPDATE_TRANSACTION_SUCCESS = "Transaction updated successfully with ID: {}";
+    public static final String LOG_DELETE_TRANSACTION_INIT = "Deleting transaction with ID: {}";
+    public static final String LOG_DELETE_TRANSACTION_SUCCESS = "Transaction deleted successfully with ID: {}";
     public static final String LOG_GET_TRANSACTION_INIT = "Fetching transaction with ID: {}";
     public static final String LOG_GET_TRANSACTION_SUCCESS = "Successfully retrieved transaction with ID: {}";
     public static final String LOG_GET_ALL_TRANSACTIONS_INIT = "Fetching all transactions";
