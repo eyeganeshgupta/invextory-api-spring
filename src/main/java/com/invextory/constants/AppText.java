@@ -176,6 +176,7 @@ public class AppText {
     public static final String LOG_GET_BATCH_BY_ID_SUCCESS = "Successfully retrieved product batch with ID: {}";
     public static final String LOG_UPDATE_BATCH_STOCK_INIT = "Updating stock for batch ID: {}";
     public static final String LOG_UPDATE_BATCH_STOCK_SUCCESS = "Stock updated for batch ID: {}";
+    public static final String LOG_UPDATE_BATCH_INIT = "Updating product batch with ID: {}";
     public static final String LOG_DELETE_BATCH_INIT = "Deleting product batch with ID: {}";
     public static final String LOG_DELETE_BATCH_SUCCESS = "Product batch deleted with ID: {}";
 

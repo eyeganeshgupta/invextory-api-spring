@@ -10,6 +10,7 @@ import com.invextory.repositories.ProductBatchRepository;
 import com.invextory.repositories.ProductRepository;
 import com.invextory.repositories.SupplierRepository;
 import com.invextory.services.ProductBatchService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -80,6 +81,56 @@ public class ProductBatchServiceImpl implements ProductBatchService {
         batchRepository.save(batch);
 
         log.info(LOG_UPDATE_BATCH_STOCK_SUCCESS, batchId);
+
+        return Response.builder()
+                .status(200)
+                .message(BATCH_UPDATE_SUCCESS_MESSAGE)
+                .build();
+    }
+
+    @Transactional
+    @Override
+    public Response updateProductBatch(Long id, ProductBatchDTO productBatchDTO) {
+        log.info(LOG_UPDATE_BATCH_INIT, id);
+
+        ProductBatch existingBatch = batchRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(ERROR_BATCH_NOT_FOUND));
+
+        if (productBatchDTO.getBatchNumber() != null) {
+            existingBatch.setBatchNumber(productBatchDTO.getBatchNumber());
+        }
+
+        if (productBatchDTO.getStockQuantity() != null) {
+            existingBatch.setStockQuantity(productBatchDTO.getStockQuantity());
+        }
+
+        if (productBatchDTO.getExpiryDate() != null) {
+            existingBatch.setExpiryDate(productBatchDTO.getExpiryDate());
+        }
+
+        if (productBatchDTO.getMrp() != null) {
+            existingBatch.setMrp(productBatchDTO.getMrp());
+        }
+
+        if (productBatchDTO.getPurchasePrice() != null) {
+            existingBatch.setPurchasePrice(productBatchDTO.getPurchasePrice());
+        }
+
+        if (productBatchDTO.getDiscount() != null) {
+            existingBatch.setDiscount(productBatchDTO.getDiscount());
+        }
+
+        if (productBatchDTO.getGstRate() != null) {
+            existingBatch.setGstRate(productBatchDTO.getGstRate());
+        }
+
+        if (productBatchDTO.getSellingPrice() != null) {
+            existingBatch.setSellingPrice(productBatchDTO.getSellingPrice());
+        }
+
+        batchRepository.save(existingBatch);
+
+        log.info(LOG_UPDATE_BATCH_STOCK_SUCCESS, id);
 
         return Response.builder()
                 .status(200)
