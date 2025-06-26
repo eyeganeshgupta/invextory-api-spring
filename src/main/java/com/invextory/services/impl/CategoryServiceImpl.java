@@ -89,7 +89,10 @@ public class CategoryServiceImpl implements CategoryService {
                     return new NotFoundException(ERROR_CATEGORY_NOT_FOUND);
                 });
 
-        existingCategory.setName(categoryDTO.getName());
+        if (categoryDTO.getName() != null) {
+            existingCategory.setName(categoryDTO.getName());
+        }
+
         categoryRepository.save(existingCategory);
 
         log.info(LOG_UPDATE_CATEGORY_SUCCESS, id);

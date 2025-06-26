@@ -106,10 +106,52 @@ public class TransactionServiceImpl implements TransactionService {
         Transaction existing = transactionRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(ERROR_TRANSACTION_NOT_FOUND));
 
-        modelMapper.map(transactionDTO, existing);
+        if (transactionDTO.getTotalProducts() != null) {
+            existing.setTotalProducts(transactionDTO.getTotalProducts());
+        }
+
+        if (transactionDTO.getTotalPrice() != null) {
+            existing.setTotalPrice(transactionDTO.getTotalPrice());
+        }
+
+        if (transactionDTO.getTransactionType() != null) {
+            existing.setTransactionType(transactionDTO.getTransactionType());
+        }
+
+        if (transactionDTO.getStatus() != null) {
+            existing.setStatus(transactionDTO.getStatus());
+        }
+
+        if (transactionDTO.getDescription() != null) {
+            existing.setDescription(transactionDTO.getDescription());
+        }
+
+        if (transactionDTO.getNote() != null) {
+            existing.setNote(transactionDTO.getNote());
+        }
+
+        if (transactionDTO.getProductBatch() != null && transactionDTO.getProductBatch().getId() != null) {
+            ProductBatch productBatch = productBatchRepository.findById(transactionDTO.getProductBatch().getId())
+                    .orElseThrow(() -> new NotFoundException(ERROR_PRODUCT_BATCH_NOT_FOUND));
+            existing.setProductBatch(productBatch);
+        }
+
+        if (transactionDTO.getUser() != null && transactionDTO.getUser().getId() != null) {
+            User user = userRepository.findById(transactionDTO.getUser().getId())
+                    .orElseThrow(() -> new NotFoundException(ERROR_USER_NOT_FOUND));
+            existing.setUser(user);
+        }
+
+        if (transactionDTO.getSupplier() != null && transactionDTO.getSupplier().getId() != null) {
+            Supplier supplier = supplierRepository.findById(transactionDTO.getSupplier().getId())
+                    .orElseThrow(() -> new NotFoundException(ERROR_SUPPLIER_NOT_FOUND));
+            existing.setSupplier(supplier);
+        }
+
         existing.setUpdatedAt(LocalDateTime.now());
 
         transactionRepository.save(existing);
+
         log.info(LOG_UPDATE_TRANSACTION_SUCCESS, id);
 
         return Response.builder()
