@@ -46,4 +46,13 @@ public class ProductBatchController {
     public ResponseEntity<Response> deleteBatch(@PathVariable Long batchId) {
         return ResponseEntity.ok(productBatchService.deleteBatch(batchId));
     }
+
+    @PatchMapping("/{batchId}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MANAGER')")
+    public ResponseEntity<Response> updateProductBatch(
+            @PathVariable Long batchId,
+            @RequestBody @Valid ProductBatchDTO productBatchDTO) {
+        return ResponseEntity.ok(productBatchService.updateProductBatch(batchId, productBatchDTO));
+    }
+
 }
